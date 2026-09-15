@@ -1,101 +1,101 @@
 # Saverino Manager
 
-Saverino Manager é um gerenciador local de saves para Windows. Ele organiza jogos, perfis e cópias de segurança de arquivos ou pastas, mantendo os backups separados do save original.
+Saverino Manager is a local save manager for Windows. It organizes games, profiles, and backup copies of files or folders while keeping backups separate from the original save.
 
-Este repositório distribui atualmente apenas os pacotes prontos nas Releases; o código-fonte será publicado separadamente. A versão atual é **0.1.0**.
+This repository currently distributes ready-to-use release packages only; the source code will be published separately. The current version is **0.1.0**.
 
-[![Latest release](https://img.shields.io/github/v/release/mmachida/Saverino-Manager?label=vers%C3%A3o)](https://github.com/mmachida/Saverino-Manager/releases)
+[![Latest release](https://img.shields.io/github/v/release/mmachida/Saverino-Manager?label=version)](https://github.com/mmachida/Saverino-Manager/releases)
 [![Platform](https://img.shields.io/badge/platform-Windows%20x64-2f5f9e)](https://github.com/mmachida/Saverino-Manager/releases)
 
-## Imagens
+## Screenshots
 
-Adicione suas duas imagens nos caminhos abaixo para preencher os exemplos no GitHub:
+Add your two screenshots at the paths below to fill the examples on GitHub:
 
-![Janela principal](screenshots/main-window.png)
+![Main window](screenshots/main-window.png)
 
-![Temas e configurações](screenshots/themes-settings.png)
+![Themes and settings](screenshots/themes-settings.png)
 
-## Download e instalação
+## Download and installation
 
-Baixe a versão mais recente na página de [Releases](https://github.com/mmachida/Saverino-Manager/releases).
+Download the latest version from the [Releases](https://github.com/mmachida/Saverino-Manager/releases) page.
 
-Para a versão atual, o pacote Windows x64 contém:
+The current Windows x64 package contains:
 
-- `save-manager-windows-x64.zip`: pacote do aplicativo.
-- `save-manager-windows-x64.sha256`: checksum para verificar o download.
+- `save-manager-windows-x64.zip`: application package.
+- `save-manager-windows-x64.sha256`: checksum for verifying the download.
 
-Extraia o ZIP inteiro para uma pasta gravável e execute `SaveManager.exe`. Mantenha `SaveManagerUpdater.exe` na mesma pasta, pois ele é usado pelo sistema de atualização. O aplicativo distribuído não exige Python ou outra instalação adicional.
+Extract the entire ZIP to a writable folder and run `SaveManager.exe`. Keep `SaveManagerUpdater.exe` in the same folder because it is used by the update system. The distributed application does not require Python or any additional installation.
 
-Opcionalmente, valide o ZIP no PowerShell:
+You can optionally verify the ZIP in PowerShell:
 
 ```powershell
 (Get-FileHash .\save-manager-windows-x64.zip -Algorithm SHA256).Hash
 Get-Content .\save-manager-windows-x64.sha256
 ```
 
-O valor hexadecimal exibido pelo primeiro comando deve ser igual ao valor do arquivo `.sha256`.
+The hexadecimal value printed by the first command must match the value in the `.sha256` file.
 
-## Primeira configuração
+## First configuration
 
-1. Abra **File > Add Game**.
-2. Informe o nome do jogo, com no máximo 50 caracteres e apenas caracteres válidos para nomes de pasta do Windows.
-3. Escolha se a origem é um **File** ou uma **Folder** e selecione o save original.
-4. Escolha o destino dos backups: **Same folder as save** ou **Custom**.
-5. Crie um perfil em **New profile**.
-6. Use **Create save** para criar a primeira cópia.
+1. Open **File > Add Game**.
+2. Enter the game name, with a maximum of 50 characters and only characters valid for Windows folder names.
+3. Choose whether the source is a **File** or a **Folder**, then select the original save.
+4. Choose the backup destination: **Same folder as save** or **Custom**.
+5. Create a profile with **New profile**.
+6. Use **Create save** to make the first backup.
 
-A origem e o destino são configurados uma vez por jogo e valem para todos os perfis daquele jogo. Os backups ficam organizados assim:
+The source and destination are configured once per game and apply to all profiles of that game. Backups are organized as follows:
 
 ```text
-Saverino - NomeDoJogo\NomeDoPerfil\...
+Saverino - GameName\ProfileName\...
 ```
 
-Cada perfil tem sua própria pasta. O arquivo original permanece no local escolhido pelo usuário.
+Each profile has its own folder. The original save remains at the location selected by the user.
 
-## Gerenciamento de saves
+## Save management
 
-A lista mostra `#`, `Name`, `Description` e `Created`. Nome e descrição podem ser editados com duplo clique; o nome segue as regras de nomes de arquivo do Windows. Saves criados automaticamente recebem nomes como `save_01`, `save_02` e assim por diante.
+The list displays `#`, `Name`, `Description`, and `Created`. Names and descriptions can be edited with a double-click; names follow Windows filename rules. Automatically created saves use names such as `save_01`, `save_02`, and so on.
 
-O aplicativo oferece:
+The application provides:
 
-- pesquisa e ordenação da lista;
-- seleção múltipla usando Ctrl, Shift, Alt ou arrastando o mouse;
-- menu de contexto para jogos e saves;
-- **Create save**, **Overwrite save**, **Load save** e **Delete**;
-- abertura da pasta da origem e da pasta de backups;
-- seleção automática do novo save criado e rolagem até o final da lista.
+- search and sorting;
+- multiple selection with Ctrl, Shift, Alt, or mouse dragging;
+- context menus for games and saves;
+- **Create save**, **Overwrite save**, **Load save**, and **Delete**;
+- buttons to open the source folder and backup folder;
+- automatic selection of a newly created save and scrolling to the end of the list.
 
-**Load save** substitui o conteúdo atual da origem somente após a confirmação. Ele não cria um backup automático adicional; o usuário escolhe conscientemente qual estado deseja carregar. **Overwrite save** substitui o backup selecionado pelo estado atual da origem.
+**Load save** replaces the current source contents only after confirmation. It does not create an additional automatic backup; the user chooses which state to load. **Overwrite save** replaces the selected backup with the current source state.
 
-Arquivos e pastas adicionados manualmente ao diretório de um perfil são sincronizados com a lista. Quando a origem é um arquivo, apenas arquivos com a mesma extensão da origem são considerados. Alterações feitas diretamente no Explorer, incluindo renomeações, são acompanhadas pelo aplicativo.
+Files and folders added manually to a profile directory are synchronized with the list. When the source is a file, only files with the same extension as the source are considered. Changes made directly in Explorer, including renames, are detected by the application.
 
-Excluir um save pede confirmação e remove o item da lista ativa. A exclusão de um perfil remove sua pasta de backups e todos os saves gerenciados nela. A exclusão de um jogo remove seus perfis e backups gerenciados, mas mantém o arquivo ou a pasta original do jogo.
+Deleting a save asks for confirmation and removes it from the active list. Deleting a profile removes its backup folder and all saves managed inside it. Deleting a game removes its profiles and managed backups but keeps the original game file or folder.
 
-## Segurança e sincronização
+## Safety and synchronization
 
-As operações de cópia e restauração são executadas em segundo plano, com verificação do conteúdo e recuperação de operações interrompidas. O aplicativo não altera a origem ao criar um backup. Durante uma restauração, a origem é substituída pelo save escolhido e o resultado é verificado.
+Copy and restore operations run in the background with content verification and recovery for interrupted operations. The application does not change the source when creating a backup. During a restore, the source is replaced with the selected save and the result is verified.
 
-O catálogo acompanha a existência real das pastas: se a pasta de um perfil for removida manualmente, o perfil deixa de aparecer após a sincronização. Se um backup estiver ausente, ele fica indisponível até reaparecer no local esperado.
+The catalog follows the real state of the folders: if a profile backup folder is removed manually, the profile disappears after synchronization. If a backup is missing, it is marked unavailable until it returns to the expected location.
 
 ## Settings
 
-Em **Options > Settings** estão disponíveis:
+**Options > Settings** includes:
 
-- idioma English (United States) ou Português (Brasil);
-- inicialização com o Windows, desativada por padrão;
-- janela sempre no topo;
-- verificação automática de atualizações ao iniciar;
-- hotkeys globais para criar e carregar saves;
-- opção **Load save without confirmation** para a hotkey de carregamento;
-- botões para limpar cada hotkey individualmente;
-- efeitos sonoros independentes para importar e carregar saves;
-- volume dos efeitos entre 0% e 100%, com padrão de 50%.
+- English (United States) and Portuguese (Brazil);
+- initialize with Windows, disabled by default;
+- always on top;
+- check for updates on startup;
+- global hotkeys for creating and loading saves;
+- **Load save without confirmation** for the load hotkey;
+- individual buttons to clear each hotkey;
+- independent sound effects for importing and loading saves;
+- sound volume from 0% to 100%, with a default of 50%.
 
-O atalho geral `Delete` funciona quando a janela está selecionada e aciona a exclusão do save selecionado. Hotkeys globais funcionam mesmo quando o aplicativo está em segundo plano e possuem um intervalo para evitar execuções duplicadas.
+The general `Delete` shortcut works while the application window is focused and triggers deletion of the selected save. Global hotkeys work while the application is in the background and include a delay to prevent duplicate operations.
 
-## Temas
+## Themes
 
-Em **Options > Themes**, os cards estão nesta ordem:
+The cards in **Options > Themes** are ordered as follows:
 
 1. Classic
 2. Night Mode
@@ -104,44 +104,44 @@ Em **Options > Themes**, os cards estão nesta ordem:
 5. Elden Ring
 6. Batman: Arkham Knight
 
-O **Night Mode** é o tema usado na primeira inicialização. A escolha é aplicada imediatamente e salva para as próximas aberturas. Cada tema mantém o mesmo comportamento de seleção, hover, botões, estados desabilitados, barras de rolagem e diálogos, alterando apenas a paleta de cores.
+**Night Mode** is used on the first launch. The selected theme is applied immediately and saved for future launches. Every theme keeps the same selection, hover, button, disabled-state, scrollbar, and dialog behavior while changing only the color palette.
 
-## Importar e exportar configurações
+## Import and export settings
 
-Em **File > Import/Export**, o aplicativo pode exportar ou importar:
+**File > Import/Export** can export or import:
 
-- configurações dos jogos;
-- perfis;
-- preferências do aplicativo;
-- idioma, tema, áudio e hotkeys.
+- game settings;
+- profiles;
+- application preferences;
+- language, theme, audio, and hotkey settings.
 
-Os arquivos e pastas dos saves **não são incluídos** no arquivo exportado. Depois de uma instalação limpa, mova manualmente os backups para as pastas registradas nas configurações do jogo antes de importar ou reconectar os dados.
+Save files and folders **are not included** in the exported file. After a clean installation, move backups manually to the paths registered in game settings before importing or reconnecting the data.
 
-## Onde os dados ficam salvos
+## Data storage
 
-As configurações do aplicativo ficam em:
+Application settings are stored in:
 
 ```text
 %APPDATA%\Saverino Manager\
 ```
 
-O catálogo, journals de recuperação, metadados, lixeira interna e logs ficam dentro dessa pasta. Os backups continuam nos destinos escolhidos pelo usuário e não são copiados para `%APPDATA%`.
+The catalog, recovery journals, metadata, internal trash, and logs are stored inside this directory. Backups remain in the destinations selected by the user and are not copied to `%APPDATA%`.
 
-## Atualizações
+## Updates
 
-O aplicativo consulta as releases públicas de [mmachida/Saverino-Manager](https://github.com/mmachida/Saverino-Manager). A verificação pode acontecer automaticamente na inicialização ou manualmente em **About > Check for Updates**.
+The application checks public releases from [mmachida/Saverino-Manager](https://github.com/mmachida/Saverino-Manager). Checks can run automatically at startup or manually through **About > Check for Updates**.
 
-Quando uma atualização compatível é encontrada, o aplicativo baixa o pacote, valida o checksum e pede confirmação antes de fechar para instalar. O atualizador substitui somente os arquivos do programa; jogos, perfis, configurações e backups ficam preservados.
+When a compatible update is found, the application downloads the package, validates its checksum, and asks for confirmation before closing to install it. The updater replaces only program files; games, profiles, settings, and backups remain preserved.
 
-Cada release publicada deve conter o ZIP e seu arquivo `.sha256` correspondentes à arquitetura distribuída. Para o Windows x64, os nomes esperados são `save-manager-windows-x64.zip` e `save-manager-windows-x64.sha256`.
+Each published release must contain the ZIP and matching `.sha256` file for its target architecture. For Windows x64, the expected names are `save-manager-windows-x64.zip` and `save-manager-windows-x64.sha256`.
 
-## Limitações conhecidas
+## Known limitations
 
-- O suporte atual é para volumes locais do Windows.
-- Caminhos de rede UNC, links simbólicos e junctions não fazem parte do escopo atual.
-- Os arquivos de backup nunca são incluídos no pacote de atualização ou no arquivo de exportação.
-- O aplicativo deve permanecer em uma pasta com permissão de leitura e escrita para permitir atualizações e logs.
+- Current support is for local Windows volumes.
+- UNC network paths, symbolic links, and junctions are outside the current scope.
+- Backup files are never included in update packages or exported settings.
+- The application must remain in a folder with read and write permission for updates and logs.
 
-## Suporte
+## Support
 
-Relate problemas e sugestões na página de [Issues do GitHub](https://github.com/mmachida/Saverino-Manager/issues). Para apoiar o projeto, acesse [Ko-fi](https://ko-fi.com/mmachida).
+Report problems and suggestions through [GitHub Issues](https://github.com/mmachida/Saverino-Manager/issues). To support the project, [Buy me a coffee](https://ko-fi.com/mmachida).

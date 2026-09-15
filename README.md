@@ -1,19 +1,15 @@
-# Saverino Manager
+# <img width="24" height="24" alt="logo256" src="https://github.com/user-attachments/assets/206514d9-c936-4582-9ae9-8f76639fde3f" /> Saverino Manager
 
 Saverino Manager is a local save manager for Windows. It organizes games, profiles, and backup copies of files or folders while keeping backups separate from the original save.
-
-This repository currently distributes ready-to-use release packages only; the source code will be published separately. The current version is **0.1.0**.
 
 [![Latest release](https://img.shields.io/github/v/release/mmachida/Saverino-Manager?label=version)](https://github.com/mmachida/Saverino-Manager/releases)
 [![Platform](https://img.shields.io/badge/platform-Windows%20x64-2f5f9e)](https://github.com/mmachida/Saverino-Manager/releases)
 
 ## Screenshots
 
-Add your two screenshots at the paths below to fill the examples on GitHub:
+<img width="962" height="572" alt="image" src="https://github.com/user-attachments/assets/f552bc58-6e5f-427a-a00b-cf9fd43e3cf7" />
+<img width="649" height="569" alt="image" src="https://github.com/user-attachments/assets/b0fd9309-6e6d-4745-9a55-30daa3b41f1a" />
 
-![Main window](screenshots/main-window.png)
-
-![Themes and settings](screenshots/themes-settings.png)
 
 ## Download and installation
 
@@ -137,9 +133,7 @@ Each published release must contain the ZIP and matching `.sha256` file for its 
 
 ## Known limitations
 
-- Current support is for local Windows volumes.
-- UNC network paths, symbolic links, and junctions are outside the current scope.
-- Backup files are never included in update packages or exported settings.
+- Current support is for Windows only.
 - The application must remain in a folder with read and write permission for updates and logs.
 
 ## Support

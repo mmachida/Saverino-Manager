@@ -1,1 +1,0 @@
-.\.venv\Scripts\python.exe -m save_manager

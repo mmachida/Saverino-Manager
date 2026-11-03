@@ -38,7 +38,7 @@ The hash printed by PowerShell must match the value in the `.sha256` file.
 - Rename projects and profiles while keeping their managed backup paths in sync.
 - Move backup destinations with verified **Copy**, **Move**, or **Cancel** actions and a progress indicator.
 
-App folder stores backups under `Saverino backup` beside the app executable. When running from source, this is the project folder containing `run.bat`. App settings, catalog data, logs, and recovery metadata stay in `%APPDATA%\Saverino Manager\`.
+App folder stores backups under `Saverino backup` beside the app executable. When running from source, backups are stored in the project directory. App settings, catalog data, logs, and recovery metadata stay in `%APPDATA%\Saverino Manager\`.
 
 ### Save management
 
@@ -97,7 +97,7 @@ Start the app with either command:
 .venv\Scripts\python.exe -m save_manager
 ```
 
-Application data is stored in `%APPDATA%\Saverino Manager\`. The source checkout's `data`, `backups`, `Saverino backup`, build output, and release output are ignored by Git so local data and generated packages stay out of source commits.
+Application data is stored in `%APPDATA%\Saverino Manager\`. This repository intentionally keeps `.gitignore` out of source control. Before staging changes in a clone, add local data folders and generated `build`, `dist`, and `release` output to `.git/info/exclude` or your global Git ignore file.
 
 ## Development checks and release build
 

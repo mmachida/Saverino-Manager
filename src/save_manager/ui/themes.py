@@ -421,9 +421,9 @@ QPushButton {{ background: @button@; color: @button_text@; border: 1px solid @bu
 QPushButton:hover {{ background: @button_hover@; }}
 QPushButton:pressed {{ background: @button_pressed@; border-top-color: @button_border_dark@; border-left-color: @button_border_dark@; border-right-color: @button_border_light@; border-bottom-color: @button_border_light@; }}
 QPushButton:disabled {{ background: @disabled_button@; color: @disabled@; border-color: @button_border_dark@; }}
-QPushButton#destructiveButton {{ background: @destructive@; color: @destructive_text@; }}
+QPushButton#destructiveButton {{ background: @destructive@; color: @destructive_text@; border: 1px solid @button_border@; border-top-color: @button_border_light@; border-left-color: @button_border_light@; border-right-color: @button_border_dark@; border-bottom-color: @button_border_dark@; }}
 QPushButton#destructiveButton:hover {{ background: @destructive_hover@; }}
-QPushButton#destructiveButton:pressed {{ background: @destructive_pressed@; }}
+QPushButton#destructiveButton:pressed {{ background: @destructive_pressed@; border-top-color: @button_border_dark@; border-left-color: @button_border_dark@; border-right-color: @button_border_light@; border-bottom-color: @button_border_light@; }}
 QPushButton#destructiveButton:disabled {{ background: @disabled_destructive@; color: @disabled_destructive_text@; }}
 QPushButton#loadButton {{ background: @load@; color: @load_text@; border: 1px solid @button_border@; border-top-color: @button_border_light@; border-left-color: @button_border_light@; border-right-color: @button_border_dark@; border-bottom-color: @button_border_dark@; }}
 QPushButton#loadButton:hover {{ background: @load_hover@; }}

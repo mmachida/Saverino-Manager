@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "save-manager"
+dynamic = ["version"]
+description = "Saverino Manager: gerenciador local de saves para Windows"
+requires-python = ">=3.12,<3.15"
+dependencies = ["PySide6==6.11.0", "packaging>=24.0,<27"]
+
+[project.optional-dependencies]
+dev = ["pytest==9.1.1", "pytest-qt==4.5.0", "ruff==0.16.7"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+version = {attr = "save_manager.version.APP_VERSION"}
+
+[tool.setuptools.package-data]
+save_manager = ["sfx/*.wav", "locales/*.json", "assets/*.svg", "assets/*.png", "assets/*.ico", "assets/flags/*.svg"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+ignore = ["BLE001", "S110", "S112", "RUF059"]

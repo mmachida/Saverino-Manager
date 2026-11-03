@@ -1,0 +1,32 @@
+# Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.pyright/
+.coverage
+*.egg-info/
+
+# Local application data and user saves
+/data/
+/backups/
+/Saverino backup/
+.save-manager-update-backups/
+.save-manager-update-state.json
+
+# Generated build and release output
+/build/
+/dist/
+/release/
+/releases/
+
+# Internal project documentation
+/docs/
+
+# Editor and operating-system files
+.idea/
+.vscode/
+Thumbs.db
+Desktop.ini

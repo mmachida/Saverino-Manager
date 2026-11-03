@@ -1,0 +1,1 @@
+"""Widgets Qt da aplicação."""

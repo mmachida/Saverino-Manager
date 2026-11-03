@@ -2,14 +2,10 @@
 
 Saverino Manager is a Windows desktop app for organizing game projects, profiles, and verified backups of save files or folders. Backups are stored separately from the original save.
 
-The current version is **1.1.0**.
-
 [![Latest release](https://img.shields.io/github/v/release/mmachida/Saverino-Manager?label=version)](https://github.com/mmachida/Saverino-Manager/releases)
 [![Platform](https://img.shields.io/badge/platform-Windows%20x64-2f5f9e)](https://github.com/mmachida/Saverino-Manager/releases)
 
-## Screenshots
-
-Screenshots can be added at `screenshots/main-window.png` and `screenshots/themes-settings.png`.
+<img width="962" height="572" alt="image" src="https://github.com/user-attachments/assets/1efd6f94-2ddc-41c5-8344-fa9e18a8187c" />
 
 ## Download and installation
 
@@ -65,9 +61,13 @@ The app includes:
 
 Auto-Save schedules can target an entire profile or an individual save. A profile schedule creates new saves; a save schedule overwrites that save. Intervals range from **15 seconds to 7,200 seconds**. The global **Auto-Save ON/OFF** control pauses or resumes all schedules, and active projects and saves are highlighted.
 
+<img width="762" height="422" alt="image" src="https://github.com/user-attachments/assets/3897190d-3e8c-4063-97fd-cebfe9ce1170" />
+
 Auto-Save continues while the window is minimized as long as the app remains open. It is not a Windows service. Saving the Auto-Save settings dialog restarts the countdowns for all enabled schedules, including schedules in other projects.
 
 ### Settings, audio, and themes
+
+<img width="702" height="572" alt="image" src="https://github.com/user-attachments/assets/f817a26f-03d6-4d3f-9fab-77d78688e0b1" />
 
 - English (United States) and Portuguese (Brazil).
 - Optional startup with Windows; disabled by default.
@@ -95,12 +95,6 @@ Start the app with either command:
 
 ```powershell
 .venv\Scripts\python.exe -m save_manager
-```
-
-or:
-
-```powershell
-.\run.bat
 ```
 
 Application data is stored in `%APPDATA%\Saverino Manager\`. The source checkout's `data`, `backups`, `Saverino backup`, build output, and release output are ignored by Git so local data and generated packages stay out of source commits.
